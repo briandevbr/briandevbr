@@ -1,8 +1,14 @@
-# David Brian💻
+# Hello, I'm "[David Brian](https://www.instagram.com/davi.d_154/)"! 👋
 
-**`Estudante de ADS | Aprendendo Python e lógica de programação`**
+**`Javascript Back-End Developer`**
 
-Me chamo "[David Brian](https://www.instagram.com/davi.d_154/)", sou de Pernambuco e tenho 18 anos. Atualmente, estou cursando Análise e Desenvolvimento de Sistemas na Uninassau. Gosto de tecnologia desde sempre e meu maior sonho e trabalhar como programador.
+I am a technology enthusiast from Pernambuco, currently studying **Systems Analysis and Development** at Uninassau.
+
+ ### 👤 About me 
+ - 🎓 Studying Technology in Systems Analysis and Development.
+ - 📍 Based in Pernambuco, Brazil.
+ - 🎯 Focused on learning best practices for programming and developing scalable solutions.
+ - 💡 Passionate about transforming logic into useful tools for people.
 
 <p align="left">
     </a> 
@@ -23,15 +29,15 @@ Me chamo "[David Brian](https://www.instagram.com/davi.d_154/)", sou de Pernambu
 
 ---
 
-### 📝 Linguagens e tecnologias
+### 📝 Technologies I'm learning
 
   
-  <img           
-    align="left" 
-    alt="HTML"
-    title="HTML" 
-    width="30px" 
-    style="padding-right: 10px;" 
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" 
-                />
+  <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" 
+            width = "35px"/>
+<img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" 
+         width = "35px"/>
+          
+          
           
