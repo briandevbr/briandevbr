@@ -2,42 +2,18 @@
 
 **`Javascript Back-End Developer`**
 
-I am a technology enthusiast from Pernambuco, currently studying **Systems Analysis and Development** at Uninassau.
+I am a technology student from Pernambuco, Brazil, currently studying Systems Analysis and Development at Uninassau.  
+My current focus is building a strong foundation in programming logic, JavaScript, algorithms, and backend development.
 
- ### 👤 About me 
- - 🎓 Studying Technology in Systems Analysis and Development.
- - 📍 Based in Pernambuco, Brazil.
- - 🎯 Focused on learning best practices for programming and developing scalable solutions.
- - 💡 Passionate about transforming logic into useful tools for people.
+ ## 👤 About me
+
+- Studying Systems Analysis and Development.
+- Focused on JavaScript, Node.js, and backend fundamentals.
+- Building practical projects to improve problem-solving and software design.
+- Interested in creating useful systems with clean logic and clear structure.
+
+## 🧠 Technologies I'm Learning
 
 <p align="left">
-    </a> 
-    <a href="https://github.com/briandevbr?tab=repositories&sort=stargazers">
-        <img 
-            alt="Total de estrelas" 
-            title="Total de estrelas GitHub" 
-            src="https://custom-icon-badges.demolab.com/github/stars/briandevbr?color=55960c&style=for-the-badge&labelColor=488207&logo=star&label=estrelas"
-    </a>
-    <a href="https://github.com/briandevbr?tab=followers">
-        <img 
-            alt="Seguidores" 
-            title="Me siga no GitHub" 
-            src="https://custom-icon-badges.demolab.com/github/followers/briandevbr?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=github&label=Seguidores&logoColor=white"
-        />
-    </a>
+  <img src="https://skillicons.dev/icons?i=js,vscode,git" />
 </p>
-
----
-
-### 📝 Technologies I'm learning
-
-  
-  <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" 
-            width = "35px"/>
-<img 
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" 
-         width = "35px"/>
-          
-          
-          
