@@ -1,4 +1,4 @@
-# Hello, I'm [David Brian](https://www.instagram.com/davi.d_154/)
+# Hello, I'm [David Brian](https://www.instagram.com/davi.d_154/)👋
 
 **`Javascript Back-End Developer focused on:`**
 
