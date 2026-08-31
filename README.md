@@ -26,7 +26,3 @@
 ### 📫 Connect with me
 
 [![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/david-brian-95b977425/) [![Instagram](https://skillicons.dev/icons?i=instagram)](https://www.instagram.com/davi.d_154/) [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
-
----
-
-![Snake animation](https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg)
