@@ -25,4 +25,4 @@
 
 ### 📫 Connect with me
 
-[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/david-brian-95b977425/) [![Instagram](https://skillicons.dev/icons?i=instagram)](https://www.instagram.com/davi.d_154/) [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
+[![LinkedIn](https://skillicons.dev/icons?i=linkedin)]([https://www.linkedin.com/in/david-brian-95b977425/](https://www.linkedin.com/in/briandevbr/?skipRedirect=true&contentTrackingId=KAgaSSkMQrqUBnk4Sk%2F19Q%3D%3D&viewName=premium-nav-upsell-text&upsellOrderOrigin=Tracking%3Av1%3Apremium_nav_upsell_text%3ANav%3AIn-Product)) [![Instagram](https://skillicons.dev/icons?i=instagram)](https://www.instagram.com/davi.d_154/) [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
