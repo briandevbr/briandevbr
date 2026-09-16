@@ -1,28 +1,51 @@
 # Hi, I'm David Brian 👋
 
-`Backend Developer | Aspiring Fullstack Engineer`
+`ADS Student · Learning backend development with JavaScript`
 
-- ⚙️ **Backend Core:** Building clean, scalable REST APIs, authentication flows, and database architectures with Node.js.
-- 🎨 **Frontend Evolution:** Developing responsive, interactive interfaces to seamlessly integrate client and server applications.
-- 🛠️ **Engineering & Workflow:** Applying clean code principles, continuous debugging, and structured Git workflows for team collaboration.
-
----
-
-### 💻 Tech Stack & Tools
-
-[![My Skills](https://skillicons.dev/icons?i=js,nodejs,html,css,vscode,git,github,linux,windows)](https://skillicons.dev)
+18-year-old Systems Analysis & Development student from Pernambuco, Brazil.
+I study every day and I publish what I build — small, tested and explainable.
 
 ---
 
-### 👤 About Me
+### 🔭 What I'm working on right now
 
-- 🎓 **Education:** 2nd-term Systems Analysis and Development (ADS) student at Uninassau (Pernambuco, Brazil).
-- 🌐 **Languages:** Native Portuguese | Improving English proficiency at PROLINFO (UPE).
-- 🎯 **Career Goal:** Focused on backend development with **JavaScript** & **Node.js**, actively building a foundation to become a complete, high-impact **Fullstack Developer**.
-
+- Going through the **freeCodeCamp Full Stack** curriculum: JavaScript core → DOM → Node.js
+- Writing small modules and covering them with **unit tests** (Vitest)
+- Practicing a real Git workflow: small commits, clear messages, one branch per feature
 
 ---
 
-### 📫 Connect with me
+### 🧰 Tech
 
-[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/briandevbr/) [![Instagram](https://skillicons.dev/icons?i=instagram)](https://www.instagram.com/davi.d_154/) [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
+**Using today**
+
+[![Skills](https://skillicons.dev/icons?i=js,html,css,git,github,linux,vscode)](https://skillicons.dev)
+
+**Next on the map:** Node.js → Express → REST APIs → SQL → testing → TypeScript
+
+---
+
+### 📌 Projects
+
+| Project | What it is | Stack |
+| --- | --- | --- |
+| [OrganizeMe](https://github.com/briandevbr/OrganizeMe) | Financial management platform — academic group project built with 10 classmates against a written requirements spec. | HTML, CSS, JavaScript |
+
+> Portfolio under construction. I'm building a REST API with Node.js as my next project —
+> I'd rather ship a few things I can explain line by line than a pile of tutorial clones.
+
+---
+
+### 👤 About me
+
+- 🎓 2nd-term ADS student at Uninassau — Olinda, Pernambuco
+- 🌐 Portuguese (native) · English in progress at PROLINFO (UPE)
+- 🐧 Daily driver: Pop!_OS + bash
+- 🎯 Goal: become a solid backend developer, then grow into fullstack
+
+---
+
+### 📫 Contact
+
+[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/david-brian-95b977425/)
+[![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
