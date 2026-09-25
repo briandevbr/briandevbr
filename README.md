@@ -4,8 +4,11 @@
 
 `ADS Student · Learning backend development with JavaScript`
 
-![Profile views](https://komarev.com/ghpvc/?username=briandevbr&label=Profile+views&color=2f81f7&style=for-the-badge)
-[![Followers](https://img.shields.io/github/followers/briandevbr?label=Followers&logo=github&style=for-the-badge&color=2f81f7)](https://github.com/briandevbr?tab=followers)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview.svg" />
+  <img alt="Contributions, public repos, followers and year joined" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview.svg" />
+</picture>
 
 18-year-old Systems Analysis & Development student from Pernambuco, Brazil.
 I study every day and I publish what I build — small, tested and explainable.
