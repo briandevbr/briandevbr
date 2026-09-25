@@ -35,10 +35,20 @@ I study every day and I publish what I build — small, tested and explainable.
 
 ### 📌 Projects
 
-| Project | What it is | Stack |
-| --- | --- | --- |
-| [OrganizeMe](https://github.com/briandevbr/OrganizeMe) | Financial management platform — academic group project built with 10 classmates against a written requirements spec. | HTML, CSS, JavaScript |
-| [data_insights](https://github.com/briandevbr/data_insights) | Starting: parsing, filtering and processing raw data in JSON. | JavaScript |
+<!-- projects:start -->
+<div align="center">
+  <a href="https://github.com/briandevbr/OrganizeMe"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
+    <img width="49%" alt="OrganizeMe: Financial management platform — academic group project built with 10 classmates against a written requirements spec." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
+  </picture></a>
+  <a href="https://github.com/briandevbr/data_insights"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-data_insights-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-data_insights.svg" />
+    <img width="49%" alt="data_insights: Parsing, filtering and processing raw data in JSON." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-data_insights.svg" />
+  </picture></a>
+</div>
+<!-- projects:end -->
 
 > Portfolio under construction. I'm building a REST API with Node.js as my next project —
 > I'd rather ship a few things I can explain line by line than a pile of tutorial clones.
