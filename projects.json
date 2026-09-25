@@ -5,7 +5,7 @@
     "status": "Group project"
   },
   {
-    "repo": "data_insights",
+    "repo": "dataInsights",
     "description": "Parsing, filtering and processing raw data in JSON.",
     "status": "In progress"
   }
