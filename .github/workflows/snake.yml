@@ -1,4 +1,4 @@
-name: Generate snake animation
+name: Generate profile assets
 
 on:
   schedule:
@@ -16,6 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate language and contribution graph cards
+        run: node scripts/generate-cards.mjs
+        env:
+          GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate snake SVGs from the contribution graph
         uses: Platane/snk@v3
         with:
