@@ -1,7 +1,7 @@
 // Generates the "Technology Footprint" and contribution graph cards for the
 // profile README. Runs in GitHub Actions and writes light/dark SVGs to dist/,
 // which the workflow publishes to the output branch next to the snake.
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const DAYS = 31;
@@ -35,21 +35,51 @@ const QUERY = `query ($login: String!) {
   }
 }`;
 
-async function fetchUser(login, token) {
+const REPO_QUERY = `query ($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    name
+    description
+    url
+    languages(first: 3, orderBy: { field: SIZE, direction: DESC }) {
+      edges { node { name color } }
+    }
+  }
+}`;
+
+async function graphql(query, variables, token) {
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
       Authorization: `bearer ${token}`,
       'Content-Type': 'application/json',
-      'User-Agent': `${login}-profile-cards`,
+      'User-Agent': 'profile-cards',
     },
-    body: JSON.stringify({ query: QUERY, variables: { login } }),
+    body: JSON.stringify({ query, variables }),
   });
   const body = await res.json();
   if (!res.ok || body.errors) {
     throw new Error(`GitHub API error: ${JSON.stringify(body.errors ?? body)}`);
   }
-  return body.data.user;
+  return body.data;
+}
+
+async function fetchUser(login, token) {
+  return (await graphql(QUERY, { login }, token)).user;
+}
+
+// "repo" in projects.json is either "name" (owned by login) or "owner/name".
+async function fetchProject(project, login, token) {
+  const [owner, name] = project.repo.includes('/') ? project.repo.split('/') : [login, project.repo];
+  const { repository } = await graphql(REPO_QUERY, { owner, name }, token);
+  if (!repository) throw new Error(`Repository not found: ${owner}/${name}`);
+  return {
+    slug: `${owner}-${name}`,
+    name: repository.name,
+    url: repository.url,
+    description: project.description ?? repository.description ?? '',
+    status: project.status,
+    languages: repository.languages.edges.map(({ node }) => ({ name: node.name, color: node.color ?? '#8b949e' })),
+  };
 }
 
 const escapeXml = (text) =>
@@ -101,6 +131,79 @@ export function renderOverview(stats, theme) {
   ${cells.join('\n  ')}
 </svg>
 `;
+}
+
+// Greedy word wrap; the last allowed line gets an ellipsis if text is left over.
+function wrap(text, maxChars, maxLines) {
+  const lines = [];
+  let line = '';
+  for (const word of text.split(/\s+/).filter(Boolean)) {
+    if (line && (line + ' ' + word).length > maxChars) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = line ? `${line} ${word}` : word;
+    }
+  }
+  if (line) lines.push(line);
+  if (lines.length > maxLines) {
+    lines.length = maxLines;
+    lines[maxLines - 1] = lines[maxLines - 1].replace(/\s*\S*$/, '') + '…';
+  }
+  return lines;
+}
+
+export function renderProjectCard(project, theme) {
+  const t = THEMES[theme];
+  const width = 495;
+  const height = 170;
+
+  const status = project.status
+    ? (() => {
+        const pillWidth = project.status.length * 6.6 + 20;
+        const x = width - 25 - pillWidth;
+        return `<rect x="${x}" y="24" width="${pillWidth}" height="22" rx="11" fill="none" stroke="${t.grid}"/>
+  <text x="${x + pillWidth / 2}" y="39" text-anchor="middle" fill="${t.muted}" font-size="11">${escapeXml(project.status)}</text>`;
+      })()
+    : '';
+
+  const description = wrap(project.description, 70, 3)
+    .map((line, i) => `<text x="25" y="${76 + i * 20}" fill="${t.text}" font-size="13">${escapeXml(line)}</text>`);
+
+  const languages = project.languages.map((lang, i) => `<g transform="translate(${25 + i * 140} 146)">
+    <circle cx="5" cy="-4" r="5" fill="${lang.color}"/>
+    <text x="17" y="0" fill="${t.muted}" font-size="12">${escapeXml(lang.name)}</text>
+  </g>`);
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" font-family="${FONT}" role="img" aria-labelledby="title">
+  <title id="title">${escapeXml(project.name)}: ${escapeXml(project.description)}</title>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="6" fill="${t.bg}" stroke="${t.grid}"/>
+  <text x="25" y="41" fill="${t.accent}" font-size="18" font-weight="600">${escapeXml(project.name)}</text>
+  ${status}
+  ${description.join('\n  ')}
+  ${languages.join('\n  ')}
+</svg>
+`;
+}
+
+// HTML for the README block between the projects markers: two cards per row,
+// each linking to its repo and switching with the viewer's color scheme.
+export function renderProjectsSection(projects, assetsUrl) {
+  const cards = projects.map((p) => `  <a href="${p.url}"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="${assetsUrl}/project-${p.slug}-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="${assetsUrl}/project-${p.slug}.svg" />
+    <img width="49%" alt="${escapeXml(p.name)}: ${escapeXml(p.description)}" src="${assetsUrl}/project-${p.slug}.svg" />
+  </picture></a>`);
+  return `<div align="center">\n${cards.join('\n')}\n</div>`;
+}
+
+export function replaceBetweenMarkers(readme, content) {
+  const start = '<!-- projects:start -->';
+  const end = '<!-- projects:end -->';
+  const from = readme.indexOf(start);
+  const to = readme.indexOf(end);
+  if (from === -1 || to === -1) throw new Error('README is missing the projects markers');
+  return `${readme.slice(0, from + start.length)}\n${content}\n${readme.slice(to)}`;
 }
 
 // Same 495x195 box as the streak card so both line up side by side.
@@ -221,7 +324,19 @@ async function main() {
     await writeFile(`dist/activity-graph${suffix}.svg`, renderActivityGraph(days, name, theme));
     await writeFile(`dist/overview${suffix}.svg`, renderOverview(overview, theme));
   }
-  console.log(`Cards written for ${login}: ${languages.length} languages, ${days.length} days`);
+  const projectList = JSON.parse(await readFile('projects.json', 'utf8'));
+  const projects = [];
+  for (const entry of projectList) projects.push(await fetchProject(entry, login, token));
+  for (const project of projects) {
+    await writeFile(`dist/project-${project.slug}.svg`, renderProjectCard(project, 'light'));
+    await writeFile(`dist/project-${project.slug}-dark.svg`, renderProjectCard(project, 'dark'));
+  }
+
+  const assetsUrl = `https://raw.githubusercontent.com/${process.env.GITHUB_REPOSITORY ?? `${login}/${login}`}/output`;
+  const readme = await readFile('README.md', 'utf8');
+  await writeFile('README.md', replaceBetweenMarkers(readme, renderProjectsSection(projects, assetsUrl)));
+
+  console.log(`Cards written for ${login}: ${languages.length} languages, ${days.length} days, ${projects.length} projects`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
