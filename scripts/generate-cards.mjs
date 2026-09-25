@@ -9,14 +9,17 @@ const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, s
 
 const THEMES = {
   light: { bg: '#ffffff', text: '#24292f', muted: '#57606a', grid: '#d8dee4', accent: '#2f81f7' },
-  dark: { bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#21262d', accent: '#2f81f7' },
+  dark: { bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#30363d', accent: '#2f81f7' },
 };
 
 const QUERY = `query ($login: String!) {
   user(login: $login) {
     name
     login
+    createdAt
+    followers { totalCount }
     repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, first: 100) {
+      totalCount
       nodes {
         languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
           edges { size node { name color } }
@@ -25,6 +28,7 @@ const QUERY = `query ($login: String!) {
     }
     contributionsCollection {
       contributionCalendar {
+        totalContributions
         weeks { contributionDays { date contributionCount } }
       }
     }
@@ -72,6 +76,31 @@ export function lastDays(calendar, days = DAYS) {
     .flatMap((week) => week.contributionDays)
     .slice(-days)
     .map((day) => ({ date: day.date, count: day.contributionCount }));
+}
+
+// Compact stat strip for the top of the README, styled like the other cards.
+export function renderOverview(stats, theme) {
+  const t = THEMES[theme];
+  const cellWidth = 160;
+  const width = cellWidth * stats.length;
+  const height = 64;
+
+  const cells = stats.map((stat, i) => {
+    const x = i * cellWidth;
+    const divider = i > 0
+      ? `<line x1="${x}" x2="${x}" y1="14" y2="${height - 14}" stroke="${t.grid}" stroke-width="1"/>`
+      : '';
+    return `${divider}
+    <text x="${x + cellWidth / 2}" y="30" text-anchor="middle" fill="${t.text}" font-size="20" font-weight="600">${escapeXml(stat.value)}</text>
+    <text x="${x + cellWidth / 2}" y="49" text-anchor="middle" fill="${t.muted}" font-size="12">${escapeXml(stat.label)}</text>`;
+  });
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" font-family="${FONT}" role="img" aria-labelledby="title">
+  <title id="title">${stats.map((s) => `${escapeXml(s.label)}: ${escapeXml(s.value)}`).join(', ')}</title>
+  <rect width="${width}" height="${height}" rx="6" fill="${t.bg}"/>
+  ${cells.join('\n  ')}
+</svg>
+`;
 }
 
 // Same 495x195 box as the streak card so both line up side by side.
@@ -178,12 +207,19 @@ async function main() {
   const languages = topLanguages(user.repositories.nodes);
   const days = lastDays(user.contributionsCollection.contributionCalendar);
   const name = user.name ?? user.login;
+  const overview = [
+    { value: user.contributionsCollection.contributionCalendar.totalContributions, label: 'Contributions (1y)' },
+    { value: user.repositories.totalCount, label: 'Public repos' },
+    { value: user.followers.totalCount, label: 'Followers' },
+    { value: user.createdAt.slice(0, 4), label: 'On GitHub since' },
+  ];
 
   await mkdir('dist', { recursive: true });
   for (const theme of ['light', 'dark']) {
     const suffix = theme === 'dark' ? '-dark' : '';
     await writeFile(`dist/languages${suffix}.svg`, renderLanguagesCard(languages, theme));
     await writeFile(`dist/activity-graph${suffix}.svg`, renderActivityGraph(days, name, theme));
+    await writeFile(`dist/overview${suffix}.svg`, renderOverview(overview, theme));
   }
   console.log(`Cards written for ${login}: ${languages.length} languages, ${days.length} days`);
 }
