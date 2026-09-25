@@ -57,13 +57,23 @@ I study every day and I publish what I build — small, tested and explainable.
 
 ---
 
-### Contributions
+### 📊 GitHub Stats
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=dark&hide_border=true&background=0D1117&stroke=30363D&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7&currStreakNum=C9D1D9&sideNums=C9D1D9&sideLabels=C9D1D9&dates=8B949E" />
-  <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
-  <img alt="GitHub contribution streak" src="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
-</picture>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=dark&hide_border=true&background=0D1117&stroke=30363D&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7&currStreakNum=C9D1D9&sideNums=C9D1D9&sideLabels=C9D1D9&dates=8B949E" />
+    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
+    <img width="49%" alt="GitHub contribution streak" src="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=0D1117&title_color=C9D1D9&text_color=C9D1D9" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=FFFFFF&title_color=24292F&text_color=24292F" />
+    <img width="49%" alt="Most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=FFFFFF&title_color=24292F&text_color=24292F" />
+  </picture>
+</div>
+
+---
+
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=0D1117&color=C9D1D9&title_color=C9D1D9&line=2F81F7&point=C9D1D9&area_color=2F81F7&custom_title=Contribution+activity" />
