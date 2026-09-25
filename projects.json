@@ -1,0 +1,12 @@
+[
+  {
+    "repo": "OrganizeMe",
+    "description": "Financial management platform — academic group project built with 10 classmates against a written requirements spec.",
+    "status": "Group project"
+  },
+  {
+    "repo": "data_insights",
+    "description": "Parsing, filtering and processing raw data in JSON.",
+    "status": "In progress"
+  }
+]
