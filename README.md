@@ -66,9 +66,9 @@ I study every day and I publish what I build — small, tested and explainable.
     <img width="49%" alt="GitHub contribution streak" src="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=0D1117&title_color=C9D1D9&text_color=C9D1D9" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=FFFFFF&title_color=24292F&text_color=24292F" />
-    <img width="49%" alt="Most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=briandevbr&layout=compact&langs_count=6&hide_border=true&custom_title=Technology+Footprint&bg_color=FFFFFF&title_color=24292F&text_color=24292F" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages.svg" />
+    <img width="49%" alt="Most used languages" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages.svg" />
   </picture>
 </div>
 
@@ -79,9 +79,9 @@ I study every day and I publish what I build — small, tested and explainable.
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=0D1117&color=C9D1D9&title_color=C9D1D9&line=2F81F7&point=C9D1D9&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
-    <img alt="Contribution activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph.svg" />
+    <img alt="Contribution activity graph" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph.svg" />
   </picture>
 </div>
 
