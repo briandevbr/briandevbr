@@ -75,11 +75,17 @@ I study every day and I publish what I build — small, tested and explainable.
 ---
 
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=0D1117&color=C9D1D9&title_color=C9D1D9&line=2F81F7&point=C9D1D9&area_color=2F81F7&custom_title=Contribution+activity" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=Contribution+activity" />
-  <img alt="Contribution activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=Contribution+activity" />
-</picture>
+### 📈 Contribution Analytics
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=0D1117&color=C9D1D9&title_color=C9D1D9&line=2F81F7&point=C9D1D9&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
+    <img alt="Contribution activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=briandevbr&hide_border=true&area=true&bg_color=FFFFFF&color=24292F&title_color=24292F&line=2F81F7&point=24292F&area_color=2F81F7&custom_title=David+Brian%27s+Contribution+Graph" />
+  </picture>
+</div>
+
+---
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/github-snake-dark.svg" />
