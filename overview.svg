@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="64" viewBox="0 0 640 64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="title">
+  <title id="title">Contributions (1y): 76, Public repos: 3, Followers: 27, On GitHub since: 2025</title>
+  <rect width="640" height="64" rx="6" fill="#ffffff"/>
+  
+    <text x="80" y="30" text-anchor="middle" fill="#24292f" font-size="20" font-weight="600">76</text>
+    <text x="80" y="49" text-anchor="middle" fill="#57606a" font-size="12">Contributions (1y)</text>
+  <line x1="160" x2="160" y1="14" y2="50" stroke="#d8dee4" stroke-width="1"/>
+    <text x="240" y="30" text-anchor="middle" fill="#24292f" font-size="20" font-weight="600">3</text>
+    <text x="240" y="49" text-anchor="middle" fill="#57606a" font-size="12">Public repos</text>
+  <line x1="320" x2="320" y1="14" y2="50" stroke="#d8dee4" stroke-width="1"/>
+    <text x="400" y="30" text-anchor="middle" fill="#24292f" font-size="20" font-weight="600">27</text>
+    <text x="400" y="49" text-anchor="middle" fill="#57606a" font-size="12">Followers</text>
+  <line x1="480" x2="480" y1="14" y2="50" stroke="#d8dee4" stroke-width="1"/>
+    <text x="560" y="30" text-anchor="middle" fill="#24292f" font-size="20" font-weight="600">2025</text>
+    <text x="560" y="49" text-anchor="middle" fill="#57606a" font-size="12">On GitHub since</text>
+</svg>
