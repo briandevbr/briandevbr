@@ -40,12 +40,19 @@ I study every day and I publish what I build — small, tested and explainable.
   <a href="https://github.com/briandevbr/OrganizeMe"><picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
-    <img width="49%" alt="OrganizeMe: Financial management platform — academic group project built with 10 classmates against a written requirements spec." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
+    <img width="495" alt="OrganizeMe: Financial management platform — academic group project built with 10 classmates against a written requirements spec." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
   </picture></a>
+  <br />
   <a href="https://github.com/briandevbr/dataInsights"><picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights.svg" />
-    <img width="49%" alt="dataInsights: Parsing, filtering and processing raw data in JSON." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights.svg" />
+    <img width="495" alt="dataInsights: Parsing, filtering and processing raw data in JSON." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights.svg" />
+  </picture></a>
+  <br />
+  <a href="https://github.com/briandevbr/dotfiles"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles.svg" />
+    <img width="495" alt="dotfiles: Customized, multiplatform terminal for beginners." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles.svg" />
   </picture></a>
 </div>
 <!-- projects:end -->
