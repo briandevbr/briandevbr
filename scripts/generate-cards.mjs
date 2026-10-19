@@ -186,15 +186,15 @@ export function renderProjectCard(project, theme) {
 `;
 }
 
-// HTML for the README block between the projects markers: two cards per row,
+// HTML for the README block between the projects markers: one card per row,
 // each linking to its repo and switching with the viewer's color scheme.
 export function renderProjectsSection(projects, assetsUrl) {
   const cards = projects.map((p) => `  <a href="${p.url}"><picture>
     <source media="(prefers-color-scheme: dark)" srcset="${assetsUrl}/project-${p.slug}-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="${assetsUrl}/project-${p.slug}.svg" />
-    <img width="49%" alt="${escapeXml(p.name)}: ${escapeXml(p.description)}" src="${assetsUrl}/project-${p.slug}.svg" />
+    <img width="495" alt="${escapeXml(p.name)}: ${escapeXml(p.description)}" src="${assetsUrl}/project-${p.slug}.svg" />
   </picture></a>`);
-  return `<div align="center">\n${cards.join('\n')}\n</div>`;
+  return `<div align="center">\n${cards.join('\n  <br />\n')}\n</div>`;
 }
 
 export function replaceBetweenMarkers(readme, content) {
