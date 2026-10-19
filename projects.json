@@ -8,5 +8,10 @@
     "repo": "dataInsights",
     "description": "Parsing, filtering and processing raw data in JSON.",
     "status": "Personal project in progress"
+  },
+  {
+    "repo": "dotfiles",
+    "description": "Customized, multiplatform terminal for beginners.",
+    "status": "Personal project in progress"
   }
 ]
