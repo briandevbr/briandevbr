@@ -1,15 +1,23 @@
-// Generates the "Technology Footprint" and contribution graph cards for the
-// profile README. Runs in GitHub Actions and writes light/dark SVGs to dist/,
-// which the workflow publishes to the output branch next to the snake.
+// Generates the overview, "Technology Footprint" and contributions-by-type
+// cards for the profile README. Runs in GitHub Actions and writes light/dark
+// SVGs to dist/, which the workflow publishes to the output branch next to the snake.
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
-const DAYS = 31;
 const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
 
+// series: categorical slots for commits, pull requests and issues, checked for
+// color-blind separation against each theme's background; other: the gray
+// "everything else" slice.
 const THEMES = {
-  light: { bg: '#ffffff', text: '#24292f', muted: '#57606a', grid: '#d8dee4', accent: '#2f81f7' },
-  dark: { bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#30363d', accent: '#2f81f7' },
+  light: {
+    bg: '#ffffff', text: '#24292f', muted: '#57606a', grid: '#d8dee4', accent: '#2f81f7',
+    series: ['#2a78d6', '#eb6834', '#1baf7a'], other: '#8c959f',
+  },
+  dark: {
+    bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#30363d', accent: '#2f81f7',
+    series: ['#3987e5', '#d95926', '#199e70'], other: '#6e7681',
+  },
 };
 
 const QUERY = `query ($login: String!) {
@@ -27,10 +35,10 @@ const QUERY = `query ($login: String!) {
       }
     }
     contributionsCollection {
-      contributionCalendar {
-        totalContributions
-        weeks { contributionDays { date contributionCount } }
-      }
+      totalCommitContributions
+      totalPullRequestContributions
+      totalIssueContributions
+      contributionCalendar { totalContributions }
     }
   }
 }`;
@@ -101,11 +109,20 @@ export function topLanguages(repos, limit = 6) {
   return top.map((lang) => ({ ...lang, percent: (lang.size / total) * 100 }));
 }
 
-export function lastDays(calendar, days = DAYS) {
-  return calendar.weeks
-    .flatMap((week) => week.contributionDays)
-    .slice(-days)
-    .map((day) => ({ date: day.date, count: day.contributionCount }));
+// Splits the last year's contributions into commits, pull requests, issues and
+// a remainder (new repos, code reviews, private work), so the slices add up to
+// the same total the overview strip shows.
+export function contributionBreakdown(collection) {
+  const total = collection.contributionCalendar.totalContributions;
+  const commits = collection.totalCommitContributions;
+  const pullRequests = collection.totalPullRequestContributions;
+  const issues = collection.totalIssueContributions;
+  return [
+    { label: 'Commits', value: commits },
+    { label: 'Pull requests', value: pullRequests },
+    { label: 'Issues', value: issues },
+    { label: 'Other', value: Math.max(total - commits - pullRequests - issues, 0) },
+  ];
 }
 
 // Compact stat strip for the top of the README, styled like the other cards.
@@ -252,51 +269,57 @@ export function renderLanguagesCard(languages, theme) {
 `;
 }
 
-// Single-series line + area of daily contributions for the last DAYS days.
-export function renderActivityGraph(days, name, theme) {
+// Donut of the last year's contributions by type, in the same 495x195 box as
+// the languages card. Slice colors are fixed per type, never by rank, and the
+// legend carries every value so color is never the only cue.
+export function renderContributionsCard(slices, theme) {
   const t = THEMES[theme];
-  const width = 850;
-  const height = 320;
-  const m = { top: 60, right: 25, bottom: 40, left: 45 };
-  const plotW = width - m.left - m.right;
-  const plotH = height - m.top - m.bottom;
+  const width = 495;
+  const height = 195;
+  const cx = 100;
+  const cy = 115;
+  const outer = 60;
+  const inner = 44;
+  const colors = [...t.series, t.other];
+  const total = slices.reduce((sum, s) => sum + s.value, 0);
+  const percent = (value) => (total ? (value / total) * 100 : 0).toFixed(1);
 
-  const max = Math.max(...days.map((d) => d.count), 4);
-  const step = Math.ceil(max / 4);
-  const yMax = step * 4;
+  const at = (radius, angle) => `${(cx + radius * Math.cos(angle)).toFixed(2)} ${(cy + radius * Math.sin(angle)).toFixed(2)}`;
+  const visible = slices.map((s, i) => ({ ...s, color: colors[i] })).filter((s) => s.value > 0);
+  let ring;
+  if (visible.length < 2) {
+    // A lone slice (or no data) is a full ring; arcs can't draw 360 degrees.
+    ring = `<circle cx="${cx}" cy="${cy}" r="${(outer + inner) / 2}" fill="none" stroke="${visible[0]?.color ?? t.grid}" stroke-width="${outer - inner}"/>`;
+  } else {
+    // Clockwise from 12 o'clock; the background-colored stroke is the 2px gap between slices.
+    let angle = -Math.PI / 2;
+    ring = visible.map((s) => {
+      const end = angle + (s.value / total) * 2 * Math.PI;
+      const large = end - angle > Math.PI ? 1 : 0;
+      const d = `M${at(outer, angle)} A${outer} ${outer} 0 ${large} 1 ${at(outer, end)} L${at(inner, end)} A${inner} ${inner} 0 ${large} 0 ${at(inner, angle)} Z`;
+      angle = end;
+      return `<path d="${d}" fill="${s.color}" stroke="${t.bg}" stroke-width="2" stroke-linejoin="round"/>`;
+    }).join('\n  ');
+  }
 
-  const xAt = (i) => m.left + (i / Math.max(days.length - 1, 1)) * plotW;
-  const yAt = (v) => m.top + plotH - (v / yMax) * plotH;
-
-  const grid = [0, 1, 2, 3, 4].map((i) => {
-    const v = i * step;
-    const y = yAt(v).toFixed(1);
-    return `<line x1="${m.left}" x2="${width - m.right}" y1="${y}" y2="${y}" stroke="${t.grid}" stroke-width="1"/>
-    <text x="${m.left - 10}" y="${y}" dy="4" text-anchor="end" fill="${t.muted}" font-size="11">${v}</text>`;
+  const legend = slices.map((s, i) => {
+    const y = 78 + i * 24;
+    return `<circle cx="195" cy="${y - 4}" r="5" fill="${colors[i]}"/>
+  <text x="207" y="${y}" fill="${t.text}" font-size="13">${escapeXml(s.label)}</text>
+  <text x="410" y="${y}" text-anchor="end" fill="${t.text}" font-size="13" font-weight="600">${s.value}</text>
+  <text x="470" y="${y}" text-anchor="end" fill="${t.muted}" font-size="13">${percent(s.value)}%</text>`;
   });
 
-  const xLabels = days.map((d, i) =>
-    `<text x="${xAt(i).toFixed(1)}" y="${height - m.bottom + 20}" text-anchor="middle" fill="${t.muted}" font-size="11">${Number(d.date.slice(8))}</text>`);
-
-  const points = days.map((d, i) => `${xAt(i).toFixed(1)},${yAt(d.count).toFixed(1)}`);
-  const baseline = yAt(0).toFixed(1);
-  const area = `M${xAt(0).toFixed(1)},${baseline} L${points.join(' L')} L${xAt(days.length - 1).toFixed(1)},${baseline} Z`;
-
-  const markers = days.map((d, i) =>
-    `<circle cx="${xAt(i).toFixed(1)}" cy="${yAt(d.count).toFixed(1)}" r="4" fill="${t.accent}" stroke="${t.bg}" stroke-width="2"><title>${d.date}: ${d.count}</title></circle>`);
-
-  const total = days.reduce((sum, d) => sum + d.count, 0);
-  const title = `${escapeXml(name)}'s Contribution Graph`;
-
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" font-family="${FONT}" role="img" aria-labelledby="title">
-  <title id="title">${title}: ${total} contributions in the last ${days.length} days</title>
+  <title id="title">Contributions by type, last 12 months: ${slices.map((s) => `${escapeXml(s.label)} ${s.value} (${percent(s.value)}%)`).join(', ')}</title>
   <rect width="${width}" height="${height}" rx="6" fill="${t.bg}"/>
-  <text x="${width / 2}" y="32" text-anchor="middle" fill="${t.text}" font-size="16" font-weight="600">${title}</text>
-  ${grid.join('\n  ')}
-  ${xLabels.join('\n  ')}
-  <path d="${area}" fill="${t.accent}" fill-opacity="0.15"/>
-  <polyline points="${points.join(' ')}" fill="none" stroke="${t.accent}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  ${markers.join('\n  ')}
+  <text x="25" y="40" fill="${t.text}" font-size="18" font-weight="600">Contributions by type</text>
+  <text x="470" y="40" text-anchor="end" fill="${t.muted}" font-size="12">Last 12 months</text>
+  ${ring}
+  <text x="${cx}" y="${cy + 4}" text-anchor="middle" fill="${t.text}" font-size="20" font-weight="600">${total}</text>
+  <text x="${cx}" y="${cy + 21}" text-anchor="middle" fill="${t.muted}" font-size="11">contributions</text>
+  ${legend.join('\n  ')}
+  <text x="190" y="180" fill="${t.muted}" font-size="11">Other: new repos, code reviews and private work</text>
 </svg>
 `;
 }
@@ -308,8 +331,7 @@ async function main() {
 
   const user = await fetchUser(login, token);
   const languages = topLanguages(user.repositories.nodes);
-  const days = lastDays(user.contributionsCollection.contributionCalendar);
-  const name = user.name ?? user.login;
+  const contributions = contributionBreakdown(user.contributionsCollection);
   const overview = [
     { value: user.contributionsCollection.contributionCalendar.totalContributions, label: 'Contributions (1y)' },
     { value: user.repositories.totalCount, label: 'Public repos' },
@@ -321,7 +343,7 @@ async function main() {
   for (const theme of ['light', 'dark']) {
     const suffix = theme === 'dark' ? '-dark' : '';
     await writeFile(`dist/languages${suffix}.svg`, renderLanguagesCard(languages, theme));
-    await writeFile(`dist/activity-graph${suffix}.svg`, renderActivityGraph(days, name, theme));
+    await writeFile(`dist/contributions${suffix}.svg`, renderContributionsCard(contributions, theme));
     await writeFile(`dist/overview${suffix}.svg`, renderOverview(overview, theme));
   }
   const projectList = JSON.parse(await readFile('projects.json', 'utf8'));
@@ -336,7 +358,7 @@ async function main() {
   const readme = await readFile('README.md', 'utf8');
   await writeFile('README.md', replaceBetweenMarkers(readme, renderProjectsSection(projects, assetsUrl)));
 
-  console.log(`Cards written for ${login}: ${languages.length} languages, ${days.length} days, ${projects.length} projects`);
+  console.log(`Cards written for ${login}: ${languages.length} languages, ${projects.length} projects`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {

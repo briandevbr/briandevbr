@@ -103,9 +103,9 @@ I study every day and I publish what I build — small, tested and explainable.
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph.svg" />
-    <img alt="Contribution activity graph" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/activity-graph.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions.svg" />
+    <img width="495" alt="Contributions in the last 12 months by type: commits, pull requests, issues and other" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions.svg" />
   </picture>
 </div>
 
