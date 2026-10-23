@@ -1,6 +1,10 @@
 # Hi, I'm David Brian 👋
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2F81F7&vCenter=true&width=520&height=40&lines=Backend+developer+in+training;Node.js+%E2%86%92+Express+%E2%86%92+REST+APIs;Small%2C+tested+and+explainable+code)](https://github.com/briandevbr)
+<a href="https://github.com/briandevbr"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=E3B341&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=9A6700&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
+  <img alt="Backend Developer | Node.js | Express | REST APIs & Terminal Automation" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=9A6700&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
+</picture></a>
 
 `ADS Student · Learning backend development with JavaScript`
 
