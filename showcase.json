@@ -1,0 +1,23 @@
+[
+  {
+    "repo": "OrganizeMe",
+    "site": "https://briandevbr.github.io/OrganizeMe/",
+    "preview": "assets/showcase/organizeme.jpg",
+    "description": "Landing page, subscription plans and sign-up/login flow of a financial and inventory management platform.",
+    "status": "College group project"
+  },
+  {
+    "repo": "fatos.online",
+    "site": "https://briandevbr.github.io/fatos.online/",
+    "preview": "assets/showcase/fatos-online.jpg",
+    "description": "Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator.",
+    "status": "College group project"
+  },
+  {
+    "repo": "Pizzaria3Irmaos",
+    "site": "https://briandevbr.github.io/Pizzaria3Irmaos/",
+    "preview": "assets/showcase/pizzaria3irmaos.jpg",
+    "description": "Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp.",
+    "status": "Local business site"
+  }
+]
