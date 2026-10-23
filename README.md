@@ -66,6 +66,67 @@ I study every day and I publish what I build — small, tested and explainable.
 
 ---
 
+### 🌐 Live Projects
+
+<!-- showcase:start -->
+<div align="center">
+  <a href="https://briandevbr.github.io/OrganizeMe/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe.svg" />
+    <img width="495" alt="OrganizeMe, live site preview: Landing page, subscription plans and sign-up/login flow of a financial and inventory management platform." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe.svg" />
+  </picture></a>
+  <br />
+  <a href="https://briandevbr.github.io/OrganizeMe/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+    <img height="32" alt="Open the OrganizeMe live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+  </picture></a>
+  <a href="https://github.com/briandevbr/OrganizeMe"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+    <img height="32" alt="OrganizeMe source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+  </picture></a>
+  <br />
+  <br />
+  <a href="https://briandevbr.github.io/fatos.online/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online.svg" />
+    <img width="495" alt="fatos.online, live site preview: Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online.svg" />
+  </picture></a>
+  <br />
+  <a href="https://briandevbr.github.io/fatos.online/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+    <img height="32" alt="Open the fatos.online live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+  </picture></a>
+  <a href="https://github.com/briandevbr/fatos.online"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+    <img height="32" alt="fatos.online source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+  </picture></a>
+  <br />
+  <br />
+  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos.svg" />
+    <img width="495" alt="Pizzaria3Irmaos, live site preview: Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos.svg" />
+  </picture></a>
+  <br />
+  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+    <img height="32" alt="Open the Pizzaria3Irmaos live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
+  </picture></a>
+  <a href="https://github.com/briandevbr/Pizzaria3Irmaos"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+    <img height="32" alt="Pizzaria3Irmaos source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
+  </picture></a>
+</div>
+<!-- showcase:end -->
+
+---
+
 ### 👤 About me
 
 - 🎓 2nd-term ADS student at Uninassau — Olinda, Pernambuco

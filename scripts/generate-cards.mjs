@@ -1,6 +1,7 @@
-// Generates the overview, "Technology Footprint" and contributions-by-type
-// cards for the profile README. Runs in GitHub Actions and writes light/dark
-// SVGs to dist/, which the workflow publishes to the output branch next to the snake.
+// Generates the overview, "Technology Footprint", contributions-by-type,
+// project and live-site showcase cards for the profile README. Runs in GitHub
+// Actions and writes light/dark SVGs to dist/, which the workflow publishes to
+// the output branch next to the snake.
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
@@ -11,11 +12,11 @@ const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, s
 // "everything else" slice.
 const THEMES = {
   light: {
-    bg: '#ffffff', text: '#24292f', muted: '#57606a', grid: '#d8dee4', accent: '#2f81f7',
+    bg: '#ffffff', text: '#24292f', muted: '#57606a', grid: '#d8dee4', accent: '#2f81f7', chrome: '#f6f8fa',
     series: ['#2a78d6', '#eb6834', '#1baf7a'], other: '#8c959f',
   },
   dark: {
-    bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#30363d', accent: '#2f81f7',
+    bg: '#0d1117', text: '#c9d1d9', muted: '#8b949e', grid: '#30363d', accent: '#2f81f7', chrome: '#161b22',
     series: ['#3987e5', '#d95926', '#199e70'], other: '#6e7681',
   },
 };
@@ -203,23 +204,116 @@ export function renderProjectCard(project, theme) {
 `;
 }
 
+// Same look as the project card, with the site's screenshot framed as a browser
+// window on top. The JPEG is embedded as a data URI because GitHub renders the
+// SVG as an image, which can't load anything external.
+export function renderShowcaseCard(project, preview, theme) {
+  const t = THEMES[theme];
+  const width = 495;
+  const frame = { x: 16, y: 16, w: 463, bar: 28 };
+  const imageH = frame.w / 2;
+  const frameH = frame.bar + imageH;
+  const nameY = frame.y + frameH + 38;
+  const height = nameY + 129;
+
+  const host = project.site.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const pillW = Math.min(host.length * 6.2 + 24, frame.w - 72);
+  const dots = [32, 46, 60].map((cx) => `<circle cx="${cx}" cy="${frame.y + 14}" r="4" fill="${t.grid}"/>`);
+
+  const status = project.status
+    ? (() => {
+        const w = project.status.length * 6.6 + 20;
+        const x = width - 25 - w;
+        return `<rect x="${x}" y="${nameY - 17}" width="${w}" height="22" rx="11" fill="none" stroke="${t.grid}"/>
+  <text x="${x + w / 2}" y="${nameY - 2}" text-anchor="middle" fill="${t.muted}" font-size="11">${escapeXml(project.status)}</text>`;
+      })()
+    : '';
+
+  const description = wrap(project.description, 70, 3)
+    .map((line, i) => `<text x="25" y="${nameY + 35 + i * 20}" fill="${t.text}" font-size="13">${escapeXml(line)}</text>`);
+
+  const languages = project.languages.map((lang, i) => `<g transform="translate(${25 + i * 140} ${nameY + 105})">
+    <circle cx="5" cy="-4" r="5" fill="${lang.color}"/>
+    <text x="17" y="0" fill="${t.muted}" font-size="12">${escapeXml(lang.name)}</text>
+  </g>`);
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" font-family="${FONT}" role="img" aria-labelledby="title">
+  <title id="title">${escapeXml(project.name)} (live at ${escapeXml(host)}): ${escapeXml(project.description)}</title>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="6" fill="${t.bg}" stroke="${t.grid}"/>
+  <clipPath id="frame"><rect x="${frame.x}" y="${frame.y}" width="${frame.w}" height="${frameH}" rx="6"/></clipPath>
+  <g clip-path="url(#frame)">
+    <rect x="${frame.x}" y="${frame.y}" width="${frame.w}" height="${frame.bar}" fill="${t.chrome}"/>
+    <image href="data:image/jpeg;base64,${preview.toString('base64')}" x="${frame.x}" y="${frame.y + frame.bar}" width="${frame.w}" height="${imageH}" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  ${dots.join('\n  ')}
+  <rect x="76" y="${frame.y + 5}" width="${pillW}" height="18" rx="9" fill="${t.bg}"/>
+  <text x="88" y="${frame.y + 18}" fill="${t.muted}" font-size="11">${escapeXml(host)}</text>
+  <line x1="${frame.x}" x2="${frame.x + frame.w}" y1="${frame.y + frame.bar}" y2="${frame.y + frame.bar}" stroke="${t.grid}"/>
+  <rect x="${frame.x + 0.5}" y="${frame.y + 0.5}" width="${frame.w - 1}" height="${frameH - 1}" rx="6" fill="none" stroke="${t.grid}"/>
+  <text x="25" y="${nameY}" fill="${t.accent}" font-size="18" font-weight="600">${escapeXml(project.name)}</text>
+  ${status}
+  ${description.join('\n  ')}
+  ${languages.join('\n  ')}
+</svg>
+`;
+}
+
+const BUTTONS = {
+  // Arrow pointing out of the page.
+  site: { label: 'Live site', icon: 'M2 12 L12 2 M5 2 H12 V9', primary: true },
+  // Angle brackets.
+  repo: { label: 'Source code', icon: 'M5 2 L1 7 L5 12 M9 2 L13 7 L9 12', primary: false },
+};
+
+// Pill-shaped link buttons shown under each showcase card.
+export function renderButton(kind, theme) {
+  const t = THEMES[theme];
+  const { label, icon, primary } = BUTTONS[kind];
+  const height = 32;
+  const width = Math.round(14 + 14 + 8 + label.length * 7.4 + 16);
+  const ink = primary ? '#ffffff' : t.text;
+  const box = primary
+    ? `<rect width="${width}" height="${height}" rx="16" fill="${t.accent}"/>`
+    : `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="15.5" fill="${t.bg}" stroke="${t.grid}"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" font-family="${FONT}" role="img" aria-label="${label}">
+  ${box}
+  <path d="${icon}" transform="translate(14 9)" fill="none" stroke="${ink}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="36" y="20.5" fill="${ink}" font-size="13" font-weight="600">${label}</text>
+</svg>
+`;
+}
+
+// <picture> that swaps between the light and dark build of an output-branch SVG.
+const themedImage = (assetsUrl, file, attrs) => `<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="${assetsUrl}/${file}-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="${assetsUrl}/${file}.svg" />
+    <img ${attrs} src="${assetsUrl}/${file}.svg" />
+  </picture>`;
+
 // HTML for the README block between the projects markers: one card per row,
 // each linking to its repo and switching with the viewer's color scheme.
 export function renderProjectsSection(projects, assetsUrl) {
-  const cards = projects.map((p) => `  <a href="${p.url}"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="${assetsUrl}/project-${p.slug}-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="${assetsUrl}/project-${p.slug}.svg" />
-    <img width="495" alt="${escapeXml(p.name)}: ${escapeXml(p.description)}" src="${assetsUrl}/project-${p.slug}.svg" />
-  </picture></a>`);
+  const cards = projects.map((p) =>
+    `  <a href="${p.url}">${themedImage(assetsUrl, `project-${p.slug}`, `width="495" alt="${escapeXml(p.name)}: ${escapeXml(p.description)}"`)}</a>`);
   return `<div align="center">\n${cards.join('\n  <br />\n')}\n</div>`;
 }
 
-export function replaceBetweenMarkers(readme, content) {
-  const start = '<!-- projects:start -->';
-  const end = '<!-- projects:end -->';
+// HTML for the README block between the showcase markers: each live site's
+// card (linking to the site) with "Live site" and "Source code" buttons below.
+export function renderShowcaseSection(projects, assetsUrl) {
+  const blocks = projects.map((p) => `  <a href="${p.site}">${themedImage(assetsUrl, `showcase-${p.slug}`, `width="495" alt="${escapeXml(p.name)}, live site preview: ${escapeXml(p.description)}"`)}</a>
+  <br />
+  <a href="${p.site}">${themedImage(assetsUrl, 'button-site', `height="32" alt="Open the ${escapeXml(p.name)} live site"`)}</a>
+  <a href="${p.url}">${themedImage(assetsUrl, 'button-repo', `height="32" alt="${escapeXml(p.name)} source code on GitHub"`)}</a>`);
+  return `<div align="center">\n${blocks.join('\n  <br />\n  <br />\n')}\n</div>`;
+}
+
+export function replaceBetweenMarkers(readme, name, content) {
+  const start = `<!-- ${name}:start -->`;
+  const end = `<!-- ${name}:end -->`;
   const from = readme.indexOf(start);
   const to = readme.indexOf(end);
-  if (from === -1 || to === -1) throw new Error('README is missing the projects markers');
+  if (from === -1 || to === -1) throw new Error(`README is missing the ${name} markers`);
   return `${readme.slice(0, from + start.length)}\n${content}\n${readme.slice(to)}`;
 }
 
@@ -345,6 +439,7 @@ async function main() {
     await writeFile(`dist/languages${suffix}.svg`, renderLanguagesCard(languages, theme));
     await writeFile(`dist/contributions${suffix}.svg`, renderContributionsCard(contributions, theme));
     await writeFile(`dist/overview${suffix}.svg`, renderOverview(overview, theme));
+    for (const kind of Object.keys(BUTTONS)) await writeFile(`dist/button-${kind}${suffix}.svg`, renderButton(kind, theme));
   }
   const projectList = JSON.parse(await readFile('projects.json', 'utf8'));
   const projects = [];
@@ -354,11 +449,23 @@ async function main() {
     await writeFile(`dist/project-${project.slug}-dark.svg`, renderProjectCard(project, 'dark'));
   }
 
-  const assetsUrl = `https://raw.githubusercontent.com/${process.env.GITHUB_REPOSITORY ?? `${login}/${login}`}/output`;
-  const readme = await readFile('README.md', 'utf8');
-  await writeFile('README.md', replaceBetweenMarkers(readme, renderProjectsSection(projects, assetsUrl)));
+  // showcase.json: projects with a site online; "preview" is a 2:1 screenshot in this repo.
+  const showcaseList = JSON.parse(await readFile('showcase.json', 'utf8'));
+  const showcase = [];
+  for (const entry of showcaseList) showcase.push({ ...(await fetchProject(entry, login, token)), site: entry.site });
+  for (const [i, project] of showcase.entries()) {
+    const preview = await readFile(showcaseList[i].preview);
+    await writeFile(`dist/showcase-${project.slug}.svg`, renderShowcaseCard(project, preview, 'light'));
+    await writeFile(`dist/showcase-${project.slug}-dark.svg`, renderShowcaseCard(project, preview, 'dark'));
+  }
 
-  console.log(`Cards written for ${login}: ${languages.length} languages, ${projects.length} projects`);
+  const assetsUrl = `https://raw.githubusercontent.com/${process.env.GITHUB_REPOSITORY ?? `${login}/${login}`}/output`;
+  let readme = await readFile('README.md', 'utf8');
+  readme = replaceBetweenMarkers(readme, 'projects', renderProjectsSection(projects, assetsUrl));
+  readme = replaceBetweenMarkers(readme, 'showcase', renderShowcaseSection(showcase, assetsUrl));
+  await writeFile('README.md', readme);
+
+  console.log(`Cards written for ${login}: ${languages.length} languages, ${projects.length} projects, ${showcase.length} live sites`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
