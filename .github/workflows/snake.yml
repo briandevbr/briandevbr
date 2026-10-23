@@ -37,12 +37,15 @@ jobs:
         with:
           target_branch: output
           build_dir: dist
+          author: briandevbr <briandevbr@gmail.com>
+          committer: briandevbr <briandevbr@gmail.com>
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit README if the projects section changed
+      # Authored as the profile owner so the bot never shows up as a contributor.
+      - name: Commit README if a generated section changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "briandevbr"
+          git config user.email "briandevbr@gmail.com"
           git add README.md
-          git diff --cached --quiet || (git commit -m "Update projects section from projects.json" && git push)
+          git diff --cached --quiet || (git commit -m "chore(readme): atualiza as seções geradas" && git push)
