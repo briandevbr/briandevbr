@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="32" viewBox="0 0 119 32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Live site">
+  <rect width="119" height="32" rx="16" fill="#2f81f7"/>
+  <path d="M2 12 L12 2 M5 2 H12 V9" transform="translate(14 9)" fill="none" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="36" y="20.5" fill="#ffffff" font-size="13" font-weight="600">Live site</text>
+</svg>
