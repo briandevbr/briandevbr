@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="133" height="32" viewBox="0 0 133 32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Source code">
+  <rect x="0.5" y="0.5" width="132" height="31" rx="15.5" fill="#0d1117" stroke="#30363d"/>
+  <path d="M5 2 L1 7 L5 12 M9 2 L13 7 L9 12" transform="translate(14 9)" fill="none" stroke="#c9d1d9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="36" y="20.5" fill="#c9d1d9" font-size="13" font-weight="600">Source code</text>
+</svg>
