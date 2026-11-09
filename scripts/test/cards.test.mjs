@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { litBlocks, renderContributions, renderLanguages, renderStack } from '../crt/cards.mjs';
+import { litBlocks, renderContributions, renderKey, renderLanguages, renderShowcase, renderStack, wrapSnake } from '../crt/cards.mjs';
 
 const count = (text, needle) => text.split(needle).length - 1;
 
@@ -45,4 +45,58 @@ test('a year without contributions shows an empty ring, not NaN', () => {
   assert.ok(svg.includes('>0.0%</text>'));
   assert.ok(!svg.includes('NaN'));
   assert.match(svg, /<circle [^>]*stroke="#0A2416"/);
+});
+
+const pizzaria = {
+  name: 'Pizzaria3Irmaos',
+  site: 'https://briandevbr.github.io/Pizzaria3Irmaos/',
+  description: 'Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp.',
+  status: 'Local business site',
+  languages: ['JavaScript', 'CSS', 'HTML'],
+};
+const jpeg = Buffer.from([0xff, 0xd8]);
+
+test('a showcase card shows the site in real color under its open command', () => {
+  const svg = renderShowcase(pizzaria, jpeg);
+  assert.ok(svg.includes('>$ open briandevbr.github.io/Pizzaria3Irmaos</text>'));
+  assert.ok(svg.includes('data:image/jpeg;base64,'));
+  assert.ok(svg.includes('preserveAspectRatio="xMidYMid slice"'));
+  assert.ok(!svg.includes('feColorMatrix'));
+});
+
+test('a showcase name that would touch the status is rejected', () => {
+  assert.throws(() => renderShowcase({ ...pizzaria, name: 'ABCDEFGHIJKLMNOPQRSTU', status: 'College group project' }, jpeg), /showcase name overlaps status/);
+});
+
+test('showcase text with markup characters stays escaped', () => {
+  const svg = renderShowcase({ ...pizzaria, description: 'A & B <C> "D"' }, jpeg);
+  assert.ok(svg.includes('A &#38; B &#60;C&#62; &#34;D&#34;'));
+  assert.ok(!/&(?![#a-z0-9]+;)/i.test(svg));
+});
+
+test('a repo without languages leaves the language line out', () => {
+  const svg = renderShowcase({ ...pizzaria, languages: [] }, jpeg);
+  assert.ok(!svg.includes(' · </text>'));
+  assert.ok(!/<text x="24" y="424"/.test(svg));
+});
+
+test('the live site key is lit and the others are not', () => {
+  assert.ok(renderKey('site').includes('fill="#39D353"'));
+  const email = renderKey('email');
+  for (const pattern of [/role="img"/, /<title>[^<]+<\/title>/, /prefers-reduced-motion/]) assert.match(email, pattern);
+  assert.throws(() => renderKey('nope'), /Unknown key/);
+});
+
+const snk = '<svg viewBox="-16 -32 880 192" width="880" height="192" xmlns="http://www.w3.org/2000/svg"><desc>Generated with https://github.com/Platane/snk</desc><style>:root{--cs:#8cffa8}</style><rect class="c" width="12" height="12"/></svg>';
+
+test('the snake is nested in the frame as markup, so it keeps animating', () => {
+  const svg = wrapSnake(snk);
+  assert.ok(svg.includes('<svg x="16" y="44" width="880" height="192" viewBox="-16 -32 880 192">'));
+  assert.ok(svg.includes(':root{--cs:#8cffa8}'));
+  assert.ok(!svg.includes('<image'));
+  assert.ok(!svg.includes('<desc>'));
+});
+
+test('a snake SVG without viewBox is rejected', () => {
+  assert.throws(() => wrapSnake('<svg></svg>'), /without viewBox/);
 });

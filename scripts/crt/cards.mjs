@@ -1,6 +1,6 @@
 // The profile's CRT cards, all drawn on the light screen level and 495 wide
 // so they stay legible on a phone.
-import { PALETTE, mono, monoEnd, pixelText, screen, textWidth } from './kit.mjs';
+import { PALETTE, mono, monoEnd, pixelText, screen, svgDoc, textWidth, wrap } from './kit.mjs';
 
 const W = 495;
 export const STACK_ITEM_MAX = 15;
@@ -89,5 +89,59 @@ ${center}
 ${mono(+(cx - textWidth(5, 11) / 2).toFixed(1), cy + 22, 'TOTAL', 11, PALETTE.dim)}
 ${legend}
 ${mono(214, 218, 'Other = new repos, reviews, private', 11, PALETTE.dim)}`,
+  });
+}
+
+// A live site: its screenshot in real color, framed under the command that opens it.
+export function renderShowcase({ name, site, description, status, languages }, jpeg) {
+  const H = 444;
+  const frame = { x: 16, y: 44, w: 463, h: 231.5 };
+  const host = site.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const statusText = `[ ${status.toUpperCase()} ]`;
+  const nameWidth = (name.length * 6 - 1) * 3;
+  if (24 + nameWidth + 12 > W - 24 - textWidth(statusText.length, 11)) throw new Error(`showcase name overlaps status: ${name}`);
+
+  const descLines = wrap(description, 52, 3).map((line, i) => mono(24, 352 + i * 21, line, 14, PALETTE.phos)).join('');
+  const langs = languages.length ? `\n${mono(24, 424, languages.join(' · '), 13, PALETTE.dim)}` : '';
+  return screen({
+    width: W, height: H, level: 'light', label: `${name} (live at ${host}): ${description}`,
+    defs: `<clipPath id="shot"><rect x="${frame.x}" y="${frame.y}" width="${frame.w}" height="${frame.h}" rx="6"/></clipPath>`,
+    body: `${mono(24, 30, `$ open ${host}`, 13, PALETTE.dim)}
+<g clip-path="url(#shot)"><image href="data:image/jpeg;base64,${jpeg.toString('base64')}" x="${frame.x}" y="${frame.y}" width="${frame.w}" height="${frame.h}" preserveAspectRatio="xMidYMid slice"/></g>
+<rect x="${frame.x + 0.5}" y="${frame.y + 0.5}" width="${frame.w - 1}" height="${frame.h - 1}" rx="6" fill="none" stroke="${PALETTE.bezel}"/>
+${pixelText(name, 24, 296, 3, PALETTE.phos).svg}
+${monoEnd(W - 24, 314, statusText, 11, PALETTE.dim)}
+${descLines}${langs}`,
+  });
+}
+
+export const KEYS = { site: '> LIVE SITE', repo: '</> SOURCE', linkedin: '> LINKEDIN', email: '> EMAIL' };
+const KEY_LABELS = { site: 'Live site', repo: 'Source code', linkedin: 'LinkedIn', email: 'Email' };
+
+// Terminal keys used as link buttons: LIVE SITE is lit, the others are not.
+export function renderKey(kind) {
+  const text = KEYS[kind];
+  if (!text) throw new Error(`Unknown key: ${kind}`);
+  const lit = kind === 'site';
+  const width = (text.length * 6 - 1) * 2 + 32;
+  return svgDoc({
+    width, height: 40, label: KEY_LABELS[kind],
+    body: `<rect x="1" y="1" width="${width - 2}" height="38" rx="7" fill="${lit ? PALETTE.phos : PALETTE.screen}" stroke="${lit ? PALETTE.hot : PALETTE.bezel}" stroke-width="2"/>
+${pixelText(text, 16, 13, 2, lit ? PALETTE.screen : PALETTE.phos).svg}`,
+  });
+}
+
+// The Platane/snk snake goes into the frame as nested markup: drawn as an
+// <image> inside another SVG it would stay frozen.
+export function wrapSnake(snakeSvg) {
+  const root = snakeSvg.replace(/^<\?xml[^>]*>\s*/, '').match(/^<svg[^>]*>/);
+  const viewBox = root?.[0].match(/viewBox="([^"]+)"/)?.[1];
+  if (!viewBox) throw new Error('snake SVG without viewBox');
+  const nested = snakeSvg.replace(/^<\?xml[^>]*>\s*/, '')
+    .replace(root[0], `<svg x="16" y="44" width="880" height="192" viewBox="${viewBox}">`)
+    .replace(/<desc>[\s\S]*?<\/desc>/, '');
+  return screen({
+    width: 912, height: 252, level: 'light', label: 'Snake eating my GitHub contribution graph',
+    body: `${mono(24, 30, '$ ./snake --contributions', 13, PALETTE.dim)}\n${nested}`,
   });
 }
