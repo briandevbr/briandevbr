@@ -1,0 +1,16 @@
+{
+  "name": "DAVID BRIAN",
+  "boot": [
+    "Started bash on tty1 (Pop!_OS)",
+    "Mounted ~/dotfiles · bash · zsh · PowerShell",
+    "Reached target backend.target (Node.js · Express)"
+  ],
+  "role": [
+    "> BACKEND DEVELOPER // NODE.JS · EXPRESS",
+    "> REST APIs & TERMINAL AUTOMATION"
+  ],
+  "stack": {
+    "now": ["JavaScript", "Node.js", "Express", "REST APIs", "HTML", "CSS", "Git", "Bash", "Vitest"],
+    "next": ["SQL", "TypeScript"]
+  }
+}
