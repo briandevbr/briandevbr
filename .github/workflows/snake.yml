@@ -18,19 +18,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate language and contribution graph cards
+      - name: Test the card generator
+        run: node --test scripts/test/*.test.mjs
+
+      # Colors match SNAKE in scripts/crt/kit.mjs (checked by workflow.test.mjs).
+      - name: Generate the snake from the contribution graph
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-raw.svg?color_snake=#8cffa8&color_dots=#0a1f12,#0e4429,#006d32,#26a641,#39d353
+
+      - name: Draw the CRT banner and cards
         run: node scripts/generate-cards.mjs
         env:
           GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate snake SVGs from the contribution graph
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+      - name: Check every SVG is well-formed
+        run: python3 -c "import glob,sys,xml.etree.ElementTree as E; fs=glob.glob('dist/*.svg'); [E.parse(f) for f in fs]; print(len(fs),'SVGs ok')"
 
       - name: Push SVGs to the output branch
         uses: crazy-max/ghaction-github-pages@v4
@@ -43,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Authored as the profile owner so the bot never shows up as a contributor.
-      - name: Commit README if a generated section changed
+      - name: Commit README if the live-projects block changed
         run: |
           git config user.name "briandevbr"
           git config user.email "briandevbr@gmail.com"
