@@ -3,6 +3,8 @@
 import { PALETTE, mono, pixelText, screen, svgDoc, textWidth, timeline } from './kit.mjs';
 
 export const LIMITS = { boot: 69, role: 54 };
+// More lines than this overlap the name (boot) or fall off the screen (role).
+export const MAX_LINES = { boot: 3, role: 2 };
 
 const W = 720;
 const H = 276;
@@ -12,6 +14,7 @@ const NAME_SPACE = W - 2 * X;
 export const bannerPixelSize = (name) => Math.min(10, NAME_SPACE / (6 * name.length - 1));
 
 function check(lines, kind) {
+  if (lines.length > MAX_LINES[kind]) throw new Error(`at most ${MAX_LINES[kind]} ${kind} lines (got ${lines.length})`);
   for (const line of lines) {
     if (line.length > LIMITS[kind]) throw new Error(`${kind} line too long (${line.length} > ${LIMITS[kind]}): ${line}`);
   }
@@ -55,10 +58,10 @@ export function renderBanner({ name, boot, role }) {
 ${bootSvg}
 ${pixels.svg}
 ${rows.map((r) => r.text).join('\n')}
-${cursor}
 </g>
 ${nameCover}
-${rows.map((r) => r.cover).join('\n')}`,
+${rows.map((r) => r.cover).join('\n')}
+<g filter="url(#phos)">${cursor}</g>`,
   });
 }
 

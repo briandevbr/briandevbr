@@ -194,6 +194,8 @@ A rosca separa os últimos 12 meses em commits, pull requests, issues e "Other"
 O gerador valida e para com mensagem clara quando:
 
 - `name` tem caractere fora da fonte em pixels;
+- `boot` tem mais de 3 linhas (a 4ª cairia em cima do nome) ou `role` tem mais de 2
+  (a 3ª sairia da tela);
 - uma linha de `boot` passa de 69 caracteres;
 - uma linha de `role` passa de 54 caracteres;
 - um item de `stack` passa de 15 caracteres.

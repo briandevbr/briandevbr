@@ -42,3 +42,17 @@ test('the divider is a dashed strip with a running pulse', () => {
   assert.match(svg, /<title>Divider<\/title>/);
   assert.match(svg, /prefers-reduced-motion/);
 });
+
+test('the cursor is drawn above the typing covers so it can blink', () => {
+  const svg = renderBanner(profile);
+  const cursor = svg.search(/<rect [^>]*blink 1\.05s/);
+  assert.ok(cursor > svg.lastIndexOf('style="animation:t'), 'cursor must come after the last typing cover');
+});
+
+test('a fourth boot line is rejected instead of overlapping the name', () => {
+  assert.throws(() => renderBanner({ ...profile, boot: [...profile.boot, 'one more'] }), /at most 3 boot lines \(got 4\)/);
+});
+
+test('a third role line is rejected instead of being cut off', () => {
+  assert.throws(() => renderBanner({ ...profile, role: [...profile.role, '> MORE'] }), /at most 2 role lines \(got 3\)/);
+});
