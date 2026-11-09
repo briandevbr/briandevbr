@@ -1,183 +1,52 @@
-# Hi, I'm David Brian 👋
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/banner.svg" width="100%" alt="David Brian — Backend Developer · Node.js · Express · REST APIs &amp; Terminal Automation" />
 
-<a href="https://github.com/briandevbr"><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=E3B341&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
-  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=9A6700&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
-  <img alt="Backend Developer | Node.js | Express | REST APIs & Terminal Automation" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=9A6700&vCenter=true&width=520&height=40&lines=Backend+Developer;Node.js+%7C+Express;REST+APIs+%26+Terminal+Automation" />
-</picture></a>
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
-`ADS Student · Learning backend development with JavaScript`
+### `$ cat about.md`
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview.svg" />
-  <img alt="Contributions, public repos, followers and year joined" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/overview.svg" />
-</picture>
+18-year-old Systems Analysis &amp; Development student (2nd term at Uninassau, Olinda, PE). I study every day and publish what I build: small, tested and explainable code.
 
-18-year-old Systems Analysis & Development student from Pernambuco, Brazil.
-I study every day and I publish what I build — small, tested and explainable.
-
----
-
-### 🔭 What I'm working on right now
-
-- Going through the **freeCodeCamp Full Stack** curriculum: JavaScript core → DOM → Node.js
-- Writing small modules and covering them with **unit tests** (Vitest)
+- Going through the **freeCodeCamp Full Stack** curriculum and covering small modules with **unit tests** (Vitest)
 - Practicing a real Git workflow: small commits, clear messages, one branch per feature
+- Daily driver: Pop!_OS + bash · English in progress at PROLINFO (UPE)
+- Goal: become a solid backend developer, then grow into fullstack
 
----
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
-### 🧰 Tech
+### `$ ls ~/stack`
 
-**Using today**
-
-[![Skills](https://skillicons.dev/icons?i=js,html,css,git,github,linux,vscode)](https://skillicons.dev)
-
-**Next on the map:** Node.js → Express → REST APIs → SQL → testing → TypeScript
-
----
-
-### 📌 Projects
-
-<!-- projects:start -->
 <div align="center">
-  <a href="https://github.com/briandevbr/OrganizeMe"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
-    <img width="495" alt="OrganizeMe: Financial management platform — academic group project built with 10 classmates against a written requirements spec." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-OrganizeMe.svg" />
-  </picture></a>
-  <br />
-  <a href="https://github.com/briandevbr/dataInsights"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights.svg" />
-    <img width="495" alt="dataInsights: Parsing, filtering and processing raw data in JSON." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dataInsights.svg" />
-  </picture></a>
-  <br />
-  <a href="https://github.com/briandevbr/dotfiles"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles.svg" />
-    <img width="495" alt="dotfiles: Customized, multiplatform terminal for beginners." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/project-briandevbr-dotfiles.svg" />
-  </picture></a>
+  <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/stack.svg" width="495" alt="Stack. Now: JavaScript, Node.js, Express, REST APIs, HTML, CSS, Git, Bash, Vitest. Next: SQL, TypeScript." />
 </div>
-<!-- projects:end -->
 
-> Portfolio under construction. I'm building a REST API with Node.js as my next project —
-> I'd rather ship a few things I can explain line by line than a pile of tutorial clones.
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
----
-
-### 🌐 Live Projects
+### `$ ls ~/live-projects`
 
 <!-- showcase:start -->
-<div align="center">
-  <a href="https://briandevbr.github.io/OrganizeMe/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe.svg" />
-    <img width="495" alt="OrganizeMe, live site preview: Landing page, subscription plans and sign-up/login flow of a financial and inventory management platform." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-OrganizeMe.svg" />
-  </picture></a>
-  <br />
-  <a href="https://briandevbr.github.io/OrganizeMe/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-    <img height="32" alt="Open the OrganizeMe live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-  </picture></a>
-  <a href="https://github.com/briandevbr/OrganizeMe"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-    <img height="32" alt="OrganizeMe source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-  </picture></a>
-  <br />
-  <br />
-  <a href="https://briandevbr.github.io/fatos.online/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online.svg" />
-    <img width="495" alt="fatos.online, live site preview: Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online.svg" />
-  </picture></a>
-  <br />
-  <a href="https://briandevbr.github.io/fatos.online/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-    <img height="32" alt="Open the fatos.online live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-  </picture></a>
-  <a href="https://github.com/briandevbr/fatos.online"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-    <img height="32" alt="fatos.online source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-  </picture></a>
-  <br />
-  <br />
-  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos.svg" />
-    <img width="495" alt="Pizzaria3Irmaos, live site preview: Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp." src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos.svg" />
-  </picture></a>
-  <br />
-  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-    <img height="32" alt="Open the Pizzaria3Irmaos live site" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-site.svg" />
-  </picture></a>
-  <a href="https://github.com/briandevbr/Pizzaria3Irmaos"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-    <img height="32" alt="Pizzaria3Irmaos source code on GitHub" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/button-repo.svg" />
-  </picture></a>
-</div>
 <!-- showcase:end -->
 
----
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
-### 👤 About me
-
-- 🎓 2nd-term ADS student at Uninassau — Olinda, Pernambuco
-- 🌐 Portuguese (native) · English in progress at PROLINFO (UPE)
-- 🐧 Daily driver: Pop!_OS + bash
-- 🎯 Goal: become a solid backend developer, then grow into fullstack
-
----
-### 📫 Contact
-
-[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/david-brian-95b977425/)
-[![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:mr.brian154@gmail.com)
-
----
-
-### 📊 GitHub Stats
+### `$ stats`
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=dark&hide_border=true&background=0D1117&stroke=30363D&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7&currStreakNum=C9D1D9&sideNums=C9D1D9&sideLabels=C9D1D9&dates=8B949E" />
-    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
-    <img width="49%" alt="GitHub contribution streak" src="https://streak-stats.demolab.com?user=briandevbr&theme=default&hide_border=true&background=FFFFFF&stroke=D0D7DE&ring=2F81F7&fire=2F81F7&currStreakLabel=2F81F7" />
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages.svg" />
-    <img width="49%" alt="Most used languages" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages.svg" />
-  </picture>
+  <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/languages.svg" width="495" alt="Most used languages" />
+  <br />
+  <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions.svg" width="495" alt="Contributions in the last 12 months by type" />
 </div>
 
----
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
+### `$ ./snake --contributions`
 
-### 📈 Contribution Analytics
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/snake.svg" width="100%" alt="Snake eating my GitHub contribution graph" />
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions.svg" />
-    <img width="495" alt="Contributions in the last 12 months by type: commits, pull requests, issues and other" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/contributions.svg" />
-  </picture>
-</div>
+<img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
----
+### `$ contact --help`
 
-### 🐍 Contribution Activity
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/briandevbr/briandevbr/output/github-snake.svg" />
-    <img alt="Snake eating my GitHub contribution graph" src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/github-snake.svg" />
-  </picture>
-</div>
+<p align="center">
+  <a href="https://www.linkedin.com/in/david-brian-95b977425/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-linkedin.svg" height="40" alt="LinkedIn" /></a>
+  <a href="mailto:mr.brian154@gmail.com"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-email.svg" height="40" alt="Email" /></a>
+</p>
