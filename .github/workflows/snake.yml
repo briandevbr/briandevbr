@@ -21,6 +21,11 @@ jobs:
       - name: Test the card generator
         run: node --test scripts/test/*.test.mjs
 
+      # Created by the runner user: the snake container runs as root, and a
+      # dist/ it created would be read-only for the card generator.
+      - name: Prepare the output folder
+        run: mkdir -p dist
+
       # Colors match SNAKE in scripts/crt/kit.mjs (checked by workflow.test.mjs).
       - name: Generate the snake from the contribution graph
         uses: Platane/snk@v3

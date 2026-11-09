@@ -18,3 +18,10 @@ test('steps run tests, snake, cards, validation and publish in that order', () =
 test('no commit is made as the Actions bot', () => {
   assert.ok(!workflow.includes('github-actions[bot]'));
 });
+
+// Platane/snk runs in a root container: if it creates dist/, the runner user
+// can't write the cards into it (EACCES on dist/banner.svg in run 102).
+test('dist exists before the snake container writes into it', () => {
+  const mkdir = workflow.indexOf('mkdir -p dist');
+  assert.ok(mkdir >= 0 && mkdir < workflow.indexOf('Platane/snk'));
+});
