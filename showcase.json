@@ -7,8 +7,8 @@
     "status": "College group project"
   },
   {
-    "repo": "fatos.online",
-    "site": "https://briandevbr.github.io/fatos.online/",
+    "repo": "fatosOnline",
+    "site": "https://briandevbr.github.io/fatosOnline/",
     "preview": "assets/showcase/fatos-online.jpg",
     "description": "Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator.",
     "status": "College group project"

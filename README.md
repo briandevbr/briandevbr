@@ -34,9 +34,9 @@ I'm David, an 18-year-old Systems Analysis &amp; Development student in my 2nd t
   <a href="https://github.com/briandevbr/OrganizeMe"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="OrganizeMe source code on GitHub" /></a>
   <br />
   <br />
-  <a href="https://briandevbr.github.io/fatos.online/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatos.online.svg" width="495" alt="fatosOnline, live site preview: Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator." /></a>
+  <a href="https://briandevbr.github.io/fatosOnline/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-fatosOnline.svg" width="495" alt="fatosOnline, live site preview: Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator." /></a>
   <br />
-  <a href="https://briandevbr.github.io/fatos.online/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the fatosOnline live site" /></a>
+  <a href="https://briandevbr.github.io/fatosOnline/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the fatosOnline live site" /></a>
   <a href="https://github.com/briandevbr/fatosOnline"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="fatosOnline source code on GitHub" /></a>
   <br />
   <br />
