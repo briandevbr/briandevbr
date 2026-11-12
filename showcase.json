@@ -13,11 +13,4 @@
     "description": "Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator.",
     "status": "College group project"
   },
-  {
-    "repo": "Pizzaria3Irmaos",
-    "site": "https://briandevbr.github.io/Pizzaria3Irmaos/",
-    "preview": "assets/showcase/pizzaria3irmaos.jpg",
-    "description": "Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp.",
-    "status": "Local business site"
-  }
 ]
