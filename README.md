@@ -4,12 +4,15 @@
 
 ### `$ cat about.md`
 
-18-year-old Systems Analysis &amp; Development student (2nd term at Uninassau, Olinda, PE). I study every day and publish what I build: small, tested and explainable code.
+> **Backend developer in training** — Node.js, Express and the terminal, one small tested module at a time.
 
-- Going through the **freeCodeCamp Full Stack** curriculum and covering small modules with **unit tests** (Vitest)
-- Practicing a real Git workflow: small commits, clear messages, one branch per feature
-- Daily driver: Pop!_OS + bash · English in progress at PROLINFO (UPE)
-- Goal: become a solid backend developer, then grow into fullstack
+I'm David, an 18-year-old Systems Analysis &amp; Development student in my 2nd term at **Uninassau**, in Olinda, Pernambuco. Three processes are always running here:
+
+- **`[ BACKEND ]`** Going from JavaScript fundamentals to **Node.js and Express** through the **freeCodeCamp Full Stack** curriculum, and covering what I write with **unit tests** (Vitest).
+- **`[ TERMINAL ]`** Automating my own setup: **[dotfiles](https://github.com/briandevbr/dotfiles)** is a modular terminal for beginners that runs bash, zsh and PowerShell on Linux, macOS and Windows. Daily driver: Pop!_OS.
+- **`[ TEAMWORK ]`** Shipping with classmates: college projects live on the web and a full restructure of the team game **Editorial da Mentira** — small commits, clear messages, one branch per feature.
+
+> 🎯 **Current mission:** become a solid backend developer, then grow into fullstack, with my English leveling up at PROLINFO (UPE) along the way.
 
 <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
