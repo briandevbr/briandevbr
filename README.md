@@ -35,12 +35,6 @@
   <br />
   <a href="https://briandevbr.github.io/fatos.online/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the fatos.online live site" /></a>
   <a href="https://github.com/briandevbr/fatos.online"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="fatos.online source code on GitHub" /></a>
-  <br />
-  <br />
-  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-briandevbr-Pizzaria3Irmaos.svg" width="495" alt="Pizzaria3Irmaos, live site preview: Online menu for a pizzeria in Olinda-PE: customers build whole or half-and-half pizzas and send the order straight to WhatsApp." /></a>
-  <br />
-  <a href="https://briandevbr.github.io/Pizzaria3Irmaos/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the Pizzaria3Irmaos live site" /></a>
-  <a href="https://github.com/briandevbr/Pizzaria3Irmaos"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="Pizzaria3Irmaos source code on GitHub" /></a>
 </div>
 <!-- showcase:end -->
 
