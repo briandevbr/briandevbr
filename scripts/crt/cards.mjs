@@ -1,5 +1,6 @@
 // The profile's CRT cards, all drawn on the light screen level and 495 wide
 // so they stay legible on a phone.
+import { ICONS } from './icons.mjs';
 import { PALETTE, mono, monoEnd, pixelText, screen, svgDoc, textWidth, wrap } from './kit.mjs';
 
 const W = 495;
@@ -8,24 +9,53 @@ export const STACK_ITEM_MAX = 15;
 // Every card opens with its name in pixels and a command on the right.
 const titleRow = (title, command) => `${pixelText(title, 24, 22, 3, PALETTE.phos).svg}\n${monoEnd(W - 24, 40, command, 13, PALETTE.dim)}`;
 
-export function renderStack({ now, next }) {
-  for (const item of [...now, ...next]) {
+const chipWidth = (text) => 26 + textWidth(text.length, 12) + 20;
+
+// A two-tone terminal tag: the logo in its own cell, then the name in capitals.
+// Queued items (next/) are drawn dashed and dimmed.
+function chip(x, y, item, queued) {
+  const text = item.toUpperCase();
+  const w = chipWidth(text);
+  const icon = ICONS[item]
+    ? `<svg x="${x + 6}" y="${y + 6}" width="14" height="14" viewBox="0 0 24 24"><path fill="${queued ? PALETTE.dim : PALETTE.phos}" d="${ICONS[item]}"/></svg>`
+    : '';
+  if (queued) {
+    return `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w - 1}" height="25" rx="3" fill="${PALETTE.screen}" stroke="${PALETTE.bezel}" stroke-dasharray="3 2"/>${icon}${mono(x + 36, y + 17.5, text, 12, PALETTE.dim)}`;
+  }
+  return `<rect x="${x}" y="${y}" width="${w}" height="26" rx="3" fill="${PALETTE.track}"/><path d="M${x + 3} ${y}h23v26h-23a3 3 0 0 1-3-3v-20a3 3 0 0 1 3-3z" fill="${PALETTE.deep}"/>${icon}${mono(x + 36, y + 17.5, text, 12, PALETTE.hot)}`;
+}
+
+// One folder per area, each tool as a chip with its logo; chips wrap to a new
+// row before they would leave the card.
+export function renderStack({ groups, next }) {
+  for (const item of [...groups.flatMap((g) => g.items), ...next]) {
     if (item.length > STACK_ITEM_MAX) throw new Error(`stack item too long (${item.length} > ${STACK_ITEM_MAX}): ${item}`);
   }
-  const columns = [24, 180, 336];
-  const parts = [titleRow('STACK', '$ ls ~/stack')];
-  let y = 80;
-  for (const [dir, items, color] of [['now/', now, PALETTE.phos], ['next/', next, PALETTE.dim]]) {
+  const folders = [
+    ...groups.map((g) => ({ dir: `${g.dir}/`, items: g.items, queued: false })),
+    { dir: 'next/', items: next, queued: true },
+  ].filter((f) => f.items.length);
+
+  const parts = [titleRow('STACK', '$ ls -l ~/stack')];
+  let y = 76;
+  for (const { dir, items, queued } of folders) {
     parts.push(mono(24, y, dir, 14, PALETTE.dim));
-    y += 26;
-    items.forEach((item, i) => {
-      const x = columns[i % 3];
-      const row = y + Math.floor(i / 3) * 24;
-      parts.push(`<rect x="${x}" y="${row - 9}" width="6" height="6" fill="${color}"/>${mono(x + 14, row, item, 15, color)}`);
-    });
-    y += Math.ceil(items.length / 3) * 24 + 14;
+    if (queued) parts.push(monoEnd(W - 24, y, '# queued', 12, PALETTE.dim));
+    let x = 24;
+    let top = y + 12;
+    for (const item of items) {
+      const w = chipWidth(item);
+      if (x > 24 && x + w > W - 24) {
+        x = 24;
+        top += 34;
+      }
+      parts.push(chip(x, top, item, queued));
+      x += w + 8;
+    }
+    y = top + 60;
   }
-  return screen({ width: W, height: y, level: 'light', label: `Stack. Now: ${now.join(', ')}. Next: ${next.join(', ')}.`, body: parts.join('\n') });
+  const label = `Stack. ${groups.map((g) => `${g.dir}: ${g.items.join(', ')}`).join('. ')}. Next: ${next.join(', ')}.`;
+  return screen({ width: W, height: y - 18, level: 'light', label, body: parts.join('\n') });
 }
 
 const BLOCKS = 20;

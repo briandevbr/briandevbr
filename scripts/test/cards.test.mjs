@@ -1,16 +1,50 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ICONS } from '../crt/icons.mjs';
 import { litBlocks, renderContributions, renderKey, renderLanguages, renderShowcase, renderStack, wrapSnake } from '../crt/cards.mjs';
 
 const count = (text, needle) => text.split(needle).length - 1;
 
+const stack = {
+  groups: [
+    { dir: 'backend', items: ['Node.js', 'Express', 'REST APIs'] },
+    { dir: 'web', items: ['JavaScript', 'HTML', 'CSS'] },
+  ],
+  next: ['SQL', 'TypeScript'],
+};
+
 test('a stack item over 15 characters is rejected', () => {
-  assert.throws(() => renderStack({ now: ['x'.repeat(16)], next: [] }), /stack item too long \(16 > 15\)/);
+  assert.throws(() => renderStack({ groups: [{ dir: 'x', items: ['x'.repeat(16)] }], next: [] }), /stack item too long \(16 > 15\)/);
 });
 
-test('the stack card lists now and next', () => {
-  const svg = renderStack({ now: ['JavaScript', 'Node.js'], next: ['SQL'] });
-  for (const word of ['now/', 'next/', 'JavaScript', 'Node.js', 'SQL', '$ ls ~/stack']) assert.ok(svg.includes(`>${word}</text>`), word);
+test('the stack card shows every folder, with next marked as queued', () => {
+  const svg = renderStack(stack);
+  for (const text of ['backend/', 'web/', 'next/', '# queued', '$ ls -l ~/stack']) assert.ok(svg.includes(`>${text}</text>`), text);
+});
+
+test('known tools get their logo next to the name in capitals', () => {
+  const svg = renderStack(stack);
+  assert.ok(svg.includes('>NODE.JS</text>'));
+  assert.ok(svg.includes(`d="${ICONS['Node.js']}"`));
+  assert.ok(svg.includes(`d="${ICONS['REST APIs']}"`));
+});
+
+test('an item without a logo still gets its chip', () => {
+  const svg = renderStack({ groups: [{ dir: 'misc', items: ['Zig'] }], next: [] });
+  assert.ok(svg.includes('>ZIG</text>'));
+});
+
+test('queued items are dashed', () => {
+  assert.ok(renderStack(stack).includes('stroke-dasharray="3 2"'));
+});
+
+test('chips wrap to a new row instead of leaving the card', () => {
+  const items = ['JavaScript', 'TypeScript', 'Node.js', 'Express', 'REST APIs', 'HTML', 'CSS', 'Git'];
+  const svg = renderStack({ groups: [{ dir: 'all', items }], next: [] });
+  const chips = [...svg.matchAll(/<rect x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="26"/g)].map((m) => [+m[1], +m[2], +m[3]]);
+  assert.equal(chips.length, items.length);
+  assert.ok(chips.every(([x, , w]) => x + w <= 471), 'every chip ends inside the card');
+  assert.ok(new Set(chips.map(([, y]) => y)).size > 1, 'more than one row');
 });
 
 test('language bars scale to the top language', () => {

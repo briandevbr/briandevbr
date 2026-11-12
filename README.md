@@ -13,10 +13,10 @@
 
 <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />
 
-### `$ ls ~/stack`
+### `$ ls -l ~/stack`
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/stack.svg" width="495" alt="Stack. Now: JavaScript, Node.js, Express, REST APIs, HTML, CSS, Git, Bash, Vitest. Next: SQL, TypeScript." />
+  <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/stack.svg" width="495" alt="Stack. backend: Node.js, Express, REST APIs. web: JavaScript, HTML, CSS. tooling: Bash, Git, Vitest, Pop!_OS. Next: SQL, TypeScript." />
 </div>
 
 <img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/divider.svg" width="100%" alt="" />

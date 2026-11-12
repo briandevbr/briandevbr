@@ -10,7 +10,11 @@
     "> REST APIs & TERMINAL AUTOMATION"
   ],
   "stack": {
-    "now": ["JavaScript", "Node.js", "Express", "REST APIs", "HTML", "CSS", "Git", "Bash", "Vitest"],
+    "groups": [
+      { "dir": "backend", "items": ["Node.js", "Express", "REST APIs"] },
+      { "dir": "web", "items": ["JavaScript", "HTML", "CSS"] },
+      { "dir": "tooling", "items": ["Bash", "Git", "Vitest", "Pop!_OS"] }
+    ],
     "next": ["SQL", "TypeScript"]
   }
 }

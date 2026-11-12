@@ -47,7 +47,7 @@ a faixa de números (contribuições, repos, seguidores, desde), o card de strea
 [ divisor ]
 ### `$ cat about.md`              texto: about + "working on", enxutos
 [ divisor ]
-### `$ ls ~/stack`                card: now/ e next/
+### `$ ls -l ~/stack`             card: pastas com etiquetas e logos, next/ em fila
 [ divisor ]
 ### `$ ls ~/live-projects`        bloco gerado: um card por site + teclas LIVE SITE / SOURCE
 [ divisor ]
@@ -158,7 +158,7 @@ esquerda e um comando em monoespaçada de 13 px (`dim`) à direita.
 
 | Card | Arquivo | Conteúdo |
 |---|---|---|
-| Stack | `stack.svg` | `now/` (em `phos`) e `next/` (em `dim`), 3 colunas, marcador quadrado |
+| Stack | `stack.svg` | uma pasta por área (`backend/`, `web/`, `tooling/`) com cada ferramenta numa etiqueta de duas cores: logo à esquerda, nome em maiúsculas à direita; as etiquetas quebram de linha antes de sair do card; `next/` fica tracejado, apagado e marcado `# queued` |
 | Linguagens | `languages.svg` | 6 linguagens; barra de 20 blocos por linha, escala relativa à maior; `%` em `hot` |
 | Contribuições | `contributions.svg` | rosca (commits `phos`, PRs `mid`, issues `pale`, other `deep`), total em pixels no centro com rótulo `TOTAL`, legenda com valor e `%`, nota "Other = new repos, reviews, private" |
 | Site no ar | `showcase-<owner>-<repo>.svg` | `$ open <host>`, print 2:1 na cor real com moldura, nome em pixels, `[ STATUS ]`, descrição (até 3 linhas de 52 caracteres), linguagens |
@@ -185,7 +185,11 @@ A rosca separa os últimos 12 meses em commits, pull requests, issues e "Other"
     "> REST APIs & TERMINAL AUTOMATION"
   ],
   "stack": {
-    "now": ["JavaScript", "Node.js", "Express", "REST APIs", "HTML", "CSS", "Git", "Bash", "Vitest"],
+    "groups": [
+      { "dir": "backend", "items": ["Node.js", "Express", "REST APIs"] },
+      { "dir": "web", "items": ["JavaScript", "HTML", "CSS"] },
+      { "dir": "tooling", "items": ["Bash", "Git", "Vitest", "Pop!_OS"] }
+    ],
     "next": ["SQL", "TypeScript"]
   }
 }
@@ -227,6 +231,7 @@ scripts/
   crt/kit.mjs          paleta, fonte em pixels, mono, moldura CRT, linha do tempo
   crt/banner.mjs       banner e divisor
   crt/cards.mjs        stack, linguagens, rosca, sites, teclas, moldura da cobrinha
+  crt/icons.mjs        logos das etiquetas da stack (Simple Icons, CC0) + ícones de REST APIs e SQL
   test/*.test.mjs      testes com node:test
 ```
 
@@ -281,14 +286,15 @@ sem imagem quebrada.
 - Versão clara das telas (decisão: CRT escuro nos dois temas).
 - GIF ou PNG do banner.
 - README em português.
-- Ícones de tecnologia ou serviços externos (skillicons, shields, streak).
+- Serviços externos de imagem (skillicons, shields, streak). Os logos da stack vêm da Simple Icons
+  (CC0) e ficam copiados em `scripts/crt/icons.mjs`; um item sem logo lá ganha a etiqueta só com o nome.
 
 ## 12. Como editar
 
 | Quero mudar… | Onde |
 |---|---|
 | Frases do banner, linhas de boot | `profile.json` → `boot`, `role` |
-| Stack | `profile.json` → `stack.now`, `stack.next` |
+| Stack | `profile.json` → `stack.groups` (pastas e itens), `stack.next` |
 | Sites no ar | `showcase.json` + print 2:1 em `assets/showcase/` |
 | About, títulos, links de contato | `README.md` (fora do bloco showcase) |
 | Cores ou intensidade dos efeitos | `scripts/crt/kit.mjs` |
