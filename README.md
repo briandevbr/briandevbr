@@ -35,6 +35,12 @@
   <br />
   <a href="https://briandevbr.github.io/fatos.online/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the fatos.online live site" /></a>
   <a href="https://github.com/briandevbr/fatos.online"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="fatos.online source code on GitHub" /></a>
+  <br />
+  <br />
+  <a href="https://daviperrelli15.github.io/editorial-da-mentira/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/showcase-DaviPerrelli15-editorial-da-mentira.svg" width="495" alt="editorial-da-mentira, live site preview: Browser game about fake news: write headlines, slap sensationalist stickers on them and pay the bills before the police chief catches on." /></a>
+  <br />
+  <a href="https://daviperrelli15.github.io/editorial-da-mentira/"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-site.svg" height="40" alt="Open the editorial-da-mentira live site" /></a>
+  <a href="https://github.com/DaviPerrelli15/editorial-da-mentira"><img src="https://raw.githubusercontent.com/briandevbr/briandevbr/output/key-repo.svg" height="40" alt="editorial-da-mentira source code on GitHub" /></a>
 </div>
 <!-- showcase:end -->
 

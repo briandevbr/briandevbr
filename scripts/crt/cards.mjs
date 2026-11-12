@@ -129,9 +129,13 @@ export function renderShowcase({ name, site, description, status, languages }, j
   const host = site.replace(/^https?:\/\//, '').replace(/\/$/, '');
   const statusText = `[ ${status.toUpperCase()} ]`;
   const nameWidth = (name.length * 6 - 1) * 3;
-  if (24 + nameWidth + 12 > W - 24 - textWidth(statusText.length, 11)) throw new Error(`showcase name overlaps status: ${name}`);
-
-  const descLines = wrap(description, 52, 3).map((line, i) => mono(24, 352 + i * 21, line, 14, PALETTE.phos)).join('');
+  if (24 + nameWidth > W - 24) throw new Error(`showcase name too long: ${name}`);
+  // A name that would touch the status pushes it to its own line, and the
+  // description moves down with slightly tighter lines to keep three of them.
+  const sameRow = 24 + nameWidth + 12 <= W - 24 - textWidth(statusText.length, 11);
+  const statusSvg = sameRow ? monoEnd(W - 24, 314, statusText, 11, PALETTE.dim) : mono(24, 336, statusText, 11, PALETTE.dim);
+  const descLines = wrap(description, 52, 3)
+    .map((line, i) => mono(24, sameRow ? 352 + i * 21 : 362 + i * 20.5, line, 14, PALETTE.phos)).join('');
   const langs = languages.length ? `\n${mono(24, 424, languages.join(' · '), 13, PALETTE.dim)}` : '';
   return screen({
     width: W, height: H, level: 'light', label: `${name} (live at ${host}): ${description}`,
@@ -140,7 +144,7 @@ export function renderShowcase({ name, site, description, status, languages }, j
 <g clip-path="url(#shot)"><image href="data:image/jpeg;base64,${jpeg.toString('base64')}" x="${frame.x}" y="${frame.y}" width="${frame.w}" height="${frame.h}" preserveAspectRatio="xMidYMid slice"/></g>
 <rect x="${frame.x + 0.5}" y="${frame.y + 0.5}" width="${frame.w - 1}" height="${frame.h - 1}" rx="6" fill="none" stroke="${PALETTE.bezel}"/>
 ${pixelText(name, 24, 296, 3, PALETTE.phos).svg}
-${monoEnd(W - 24, 314, statusText, 11, PALETTE.dim)}
+${statusSvg}
 ${descLines}${langs}`,
   });
 }

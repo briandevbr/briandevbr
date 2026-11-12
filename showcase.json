@@ -12,5 +12,12 @@
     "preview": "assets/showcase/fatos-online.jpg",
     "description": "Fact-checking landing page against misinformation, with a live monitoring panel, a claim checker and an in-house QR code generator.",
     "status": "College group project"
+  },
+  {
+    "repo": "DaviPerrelli15/editorial-da-mentira",
+    "site": "https://daviperrelli15.github.io/editorial-da-mentira/",
+    "preview": "assets/showcase/editorial-da-mentira.jpg",
+    "description": "Browser game about fake news: write headlines, slap sensationalist stickers on them and pay the bills before the police chief catches on.",
+    "status": "Team game · contributor"
   }
 ]

@@ -207,9 +207,11 @@ O gerador valida e para com mensagem clara quando:
 ### `showcase.json` (já existe, sem mudança de formato)
 
 `repo`, `site`, `preview` (JPEG 2:1 em `assets/showcase/`), `description`,
-`status`. O gerador para com erro se o nome do site em pixels encostar no
-`[ STATUS ]` da mesma linha (hoje o maior caso, `PIZZARIA3IRMAOS` com
-`LOCAL BUSINESS SITE`, cabe com folga).
+`status`. `repo` pode ser `nome` (repositório seu) ou `dono/nome` (projeto de
+outra pessoa em que você contribuiu). Quando o nome em pixels encostaria no
+`[ STATUS ]`, o status desce para a linha de baixo e a descrição desce junto;
+o gerador só para com erro se o nome for mais largo que o card (mais de 25
+caracteres).
 
 ### API do GitHub (no workflow)
 

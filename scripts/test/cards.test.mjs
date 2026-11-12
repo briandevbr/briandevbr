@@ -98,8 +98,21 @@ test('a showcase card shows the site in real color under its open command', () =
   assert.ok(!svg.includes('feColorMatrix'));
 });
 
-test('a showcase name that would touch the status is rejected', () => {
-  assert.throws(() => renderShowcase({ ...pizzaria, name: 'ABCDEFGHIJKLMNOPQRSTU', status: 'College group project' }, jpeg), /showcase name overlaps status/);
+test('a short name keeps the status on its own row, to the right', () => {
+  const svg = renderShowcase(pizzaria, jpeg);
+  assert.match(svg, /<text x="[\d.]+" y="314"[^>]*>\[ LOCAL BUSINESS SITE \]<\/text>/);
+  assert.match(svg, /<text x="24" y="352"/);
+});
+
+test('a long name moves the status to the line below', () => {
+  const svg = renderShowcase({ ...pizzaria, name: 'editorial-da-mentira', status: 'Team game · contributor' }, jpeg);
+  assert.match(svg, /<text x="24" y="336"[^>]*>\[ TEAM GAME · CONTRIBUTOR \]<\/text>/);
+  assert.match(svg, /<text x="24" y="362"/);
+  assert.ok(!/<text[^>]*y="314"/.test(svg), 'no text left on the name row');
+});
+
+test('a name wider than the card is rejected', () => {
+  assert.throws(() => renderShowcase({ ...pizzaria, name: 'x'.repeat(26) }, jpeg), /showcase name too long/);
 });
 
 test('showcase text with markup characters stays escaped', () => {
