@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 14" width="720" height="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'DejaVu Sans Mono', monospace" role="img" aria-label="Divider">
+<title>Divider</title>
+<style>@keyframes show{from{opacity:0}to{opacity:1}}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@keyframes blink{50%{opacity:0}}@keyframes run{from{transform:translateX(0)}to{transform:translateX(900px)}}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>
+<defs><linearGradient id="pulse" x1="0" x2="1"><stop offset="0" stop-color="#8CFFA8" stop-opacity="0"/><stop offset=".7" stop-color="#8CFFA8" stop-opacity=".9"/><stop offset="1" stop-color="#8CFFA8" stop-opacity="0"/></linearGradient>
+<filter id="g" x="-10%" y="-200%" width="120%" height="500%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="c"><rect width="720" height="14" rx="4"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="720" height="14" fill="#04100A"/>
+<line x1="8" x2="712" y1="7" y2="7" stroke="#4FAE6A" stroke-width="2" stroke-dasharray="8 6" opacity=".7"/>
+<rect x="-180" y="5" width="180" height="4" fill="url(#pulse)" filter="url(#g)" style="animation:run 4.5s cubic-bezier(.45,0,.55,1) infinite"/>
+</g>
+<rect x=".5" y=".5" width="719" height="13" rx="4" fill="none" stroke="#0F3D22"/>
+</svg>
